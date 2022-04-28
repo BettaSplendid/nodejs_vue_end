@@ -79,11 +79,9 @@ async function handle_modify_submit(item) {
     currency: item.currency,
     brand: item.brand,
   };
-  
+
   console.log(values);
   console.log(item.title);
-  }
-
 
   console.log("Sending");
 
