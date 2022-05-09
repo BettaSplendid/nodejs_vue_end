@@ -3,7 +3,7 @@
     <form @submit.prevent>
       <p>
         <label for="fileinput">Put your file here</label>
-        <input accept=".csv" type="file" name="u" id="fileinput" />
+        <input accept=".csv" type="file" name="fileinput" id="fileinput" />
         <button @click="submit()" type="submit">Submit</button>
       </p>
     </form>
