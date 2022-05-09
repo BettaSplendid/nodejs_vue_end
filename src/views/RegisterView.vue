@@ -12,7 +12,7 @@
       <form @submit.prevent>
         <p>
           <label for="email">Email:</label>
-          <input v-model="email" type="text" name="" id="email" />
+          <input v-model="email" type="email" name="" id="email" />
         </p>
         <p>
           <label for="password">Password:</label>
@@ -54,6 +54,8 @@ async function start_register() {
     return;
   }
 
+  console.log("Sending values");
+
   let response = await fetch("http://127.0.0.1:3200/register", {
     method: "POST",
     headers: {
@@ -61,9 +63,12 @@ async function start_register() {
     },
     body: JSON.stringify(values),
   })
-    .then((r) => r.json())
+    .then()
     .catch();
 
   console.log(response);
-}
+  console.log(response.status)
+  if(response.status == "200"){
+    error_mess.value = "Successfully created account";
+}}
 </script>
