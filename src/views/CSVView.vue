@@ -3,7 +3,7 @@
     <form @submit.prevent>
       <p>
         <label for="fileinput">Put your file here</label>
-        <input accept=".csv" type="file" name="fileinput" id="fileinput" />
+        <input accept=".csv" type="file" name="u" id="fileinput" />
         <button @click="submit()" type="submit">Submit</button>
       </p>
     </form>
@@ -16,17 +16,19 @@ async function submit() {
   let file = document.getElementById("fileinput").files[0];
   console.log(file);
 
-  let the_form_data = new FormData();
-  the_form_data.append("file", file);
-  console.log(the_form_data);
+  let formData = new FormData();
+  //   formData.append('file', file);
+  formData.append("name", "John");
+  formData.append("password", "John123");
+  console.log(formData);
 
-  console.log(the_form_data.get('Username'));
+  console.log(formData.get("name"));
   let response = await fetch("http://127.0.0.1:3200/csv", {
     method: "POST",
     headers: {
-      "Content-Type": "text/csv",
+      "Content-Type": "multipart/form-data",
     },
-    file: the_form_data,
+    files: formData,
   })
     .then((r) => r.json())
     .catch();
